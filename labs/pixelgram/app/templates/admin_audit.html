@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block title %}Audit • PixelGram{% endblock %}
+{% block content %}
+<div class="container-sm">
+  <div class="page-title" style="color:var(--danger);">Signup audit log</div>
+  <div class="page-sub">Internal staff tool — recent account activity</div>
+  <table class="audit-table">
+    <thead><tr><th>Username</th><th>Note</th></tr></thead>
+    <tbody>
+      {% for row in rows %}
+      <tr><td>{{ row['username'] }}</td><td>{{ row['note'] }}</td></tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}

@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{% block title %}PixelGram{% endblock %}</title>
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+  {% if user %}
+  <nav class="navbar">
+    <div class="navbar-inner">
+      <a href="/" class="logo">PixelGram</a>
+      <form action="/search" method="get" style="flex:1;max-width:280px;">
+        <input class="search-input" name="q" value="{{ request.args.get('q','') }}" placeholder="Search" />
+      </form>
+      <div class="nav-links">
+        <a href="/">Feed</a>
+        <a href="/u/{{ user['username'] }}">Profile</a>
+        <a href="/account">Account</a>
+        {% if user['role'] == 'admin' %}
+        <a href="/admin/audit" class="nav-admin">Audit</a>
+        {% endif %}
+        <a href="/logout" class="nav-logout">Log out</a>
+      </div>
+    </div>
+  </nav>
+  {% endif %}
+
+  <main>
+    {% block content %}{% endblock %}
+  </main>
+</body>
+</html>

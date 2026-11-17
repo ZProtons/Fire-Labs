@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block title %}PixelGram{% endblock %}
+{% block content %}
+<div class="feed">
+  {% for post in posts %}
+  <article class="post-card">
+    <div class="post-header">
+      <div class="avatar avatar-sm" style="background: {{ post['avatar_color'] }};">{{ post['username'][0]|upper }}</div>
+      <a href="/u/{{ post['username'] }}" class="post-username">{{ post['username'] }}</a>
+    </div>
+    <a href="/post/{{ post['id'] }}" class="post-media" style="background: linear-gradient(135deg, {{ post['gradient'] }});">
+      {{ post['emoji'] }}
+    </a>
+    <div class="post-body">
+      <div class="post-actions"><span>&#9825;</span><span>&#128172;</span><span>&#9992;</span></div>
+      <div class="post-likes">{{ post['likes'] + 12 }} likes</div>
+      <div class="post-caption"><span class="post-username">{{ post['username'] }}</span>{{ post['caption'] }}</div>
+      <a href="/post/{{ post['id'] }}" class="view-comments">View comments</a>
+    </div>
+  </article>
+  {% endfor %}
+</div>
+{% endblock %}

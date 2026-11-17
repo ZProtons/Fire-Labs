@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block title %}Account • PixelGram{% endblock %}
+{% block content %}
+<div class="container-sm">
+  <div class="page-title">Account settings</div>
+  <div class="card" style="margin-top:14px;">
+    <div class="kv">
+      <div><div class="k">Username</div><div class="v">{{ user['username'] }}</div></div>
+      <div><div class="k">Bio</div><div class="v">{{ user['bio'] }}</div></div>
+      <div><div class="k">Role</div><div class="v">{{ user['role'] }}</div></div>
+      <div>
+        <div class="k">Private recovery key</div>
+        <div class="mono-box">{{ user['private_key'] if user['private_key'] else '(none set)' }}</div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title %}Search • PixelGram{% endblock %}
+{% block content %}
+<div class="container-sm">
+  <div class="page-title">Results for "{{ q }}"</div>
+  <div class="search-results" style="margin-top:14px;">
+    {% for r in results %}
+    <div class="result-row">
+      <span>{{ r[1] }}</span>
+      <span class="result-kind">{{ r[2] }}</span>
+    </div>
+    {% else %}
+    <p class="muted">No results.</p>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}

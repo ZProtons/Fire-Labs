@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block title %}Profile • PixelGram{% endblock %}
+{% block content %}
+{% if profile_user %}
+<div class="container-sm">
+  <div class="profile-header">
+    <div class="avatar avatar-lg" style="background: {{ profile_user['avatar_color'] }};">{{ profile_user['username'][0]|upper }}</div>
+    <div>
+      <div class="profile-name">
+        {{ profile_user['username'] }}
+        {% if profile_user['role'] == 'admin' %}
+        <span class="badge-staff">staff</span>
+        {% endif %}
+      </div>
+      <div class="profile-bio">{{ profile_user['bio'] }}</div>
+      <div class="profile-meta">{{ posts|length }} posts</div>
+    </div>
+  </div>
+  <div class="post-grid">
+    {% for post in posts %}
+    <a href="/post/{{ post['id'] }}" style="background: linear-gradient(135deg, {{ post['gradient'] }});">{{ post['emoji'] }}</a>
+    {% endfor %}
+  </div>
+</div>
+{% else %}
+<p class="muted" style="text-align:center;">User not found.</p>
+{% endif %}
+{% endblock %}

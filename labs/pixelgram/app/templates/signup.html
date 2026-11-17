@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sign up • PixelGram</title>
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+  <div class="auth-page">
+    <div class="auth-wrap">
+      <div class="auth-logo">PixelGram</div>
+      <div class="card">
+        {% if error %}
+        <div class="error-text">{{ error }}</div>
+        {% endif %}
+        <form method="POST" action="/signup" class="field">
+          <div>
+            <input id="username" class="text-input" name="username" placeholder="Username" autocomplete="off" />
+            <div id="availability" class="availability"></div>
+          </div>
+          <input class="text-input" name="password" type="password" placeholder="Password" />
+          <textarea class="text-input" name="bio" placeholder="Bio (optional)" rows="2"></textarea>
+          <button type="submit" class="btn btn-primary">Sign up</button>
+        </form>
+      </div>
+      <div class="card card-footer">
+        Have an account? <a href="/login" style="color:var(--accent);">Log in</a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const input = document.getElementById('username');
+    const label = document.getElementById('availability');
+    let t;
+    input.addEventListener('input', () => {
+      clearTimeout(t);
+      const val = input.value.trim();
+      if (!val) { label.textContent = ''; label.className = 'availability'; return; }
+      t = setTimeout(async () => {
+        try {
+          const res = await fetch('/api/check-username?username=' + encodeURIComponent(val));
+          const data = await res.json();
+          label.textContent = data.available ? 'Username available' : 'Username taken';
+          label.className = 'availability ' + (data.available ? 'ok' : 'taken');
+        } catch (e) { label.textContent = ''; }
+      }, 350);
+    });
+  </script>
+</body>
+</html>

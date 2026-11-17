@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Login • PixelGram</title>
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+  <div class="auth-page">
+    <div class="auth-wrap">
+      <div class="auth-logo">PixelGram</div>
+      <div class="card">
+        {% if error %}
+        <div class="error-text">{{ error }}</div>
+        {% endif %}
+        <form method="POST" action="/login" class="field">
+          <input class="text-input" name="username" placeholder="Username" />
+          <input class="text-input" name="password" type="password" placeholder="Password" />
+          <button type="submit" class="btn btn-primary">Log in</button>
+        </form>
+      </div>
+      <div class="card card-footer">
+        Don't have an account? <a href="/signup" style="color:var(--accent);">Sign up</a>
+      </div>
+      <div style="text-align:center; margin-top:14px;">
+        <a href="/forgot-password" class="muted-link">Forgot password?</a>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

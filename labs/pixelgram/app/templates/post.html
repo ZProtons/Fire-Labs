@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block title %}Post • PixelGram{% endblock %}
+{% block content %}
+<div class="container-sm">
+  <div class="post-detail-media" style="background: linear-gradient(135deg, {{ post['gradient'] }});">{{ post['emoji'] }}</div>
+  <div class="post-caption"><span class="post-username">{{ post['username'] }}</span>{{ post['caption'] }}</div>
+  <div class="comment-list">
+    {% for c in comments %}
+    <div class="comment-row">
+      <div class="avatar avatar-xs" style="background: {{ c['avatar_color'] }};">{{ c['username'][0]|upper }}</div>
+      <div><span class="post-username">{{ c['username'] }}</span> {{ c['text'] }}</div>
+    </div>
+    {% else %}
+    <p class="muted">No comments yet.</p>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}

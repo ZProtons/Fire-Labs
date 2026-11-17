@@ -1,0 +1,17 @@
+<!doctype html>
+<html>
+<head><title>Vault Bank — Login</title></head>
+<body style="font-family: sans-serif; max-width: 600px; margin: 60px auto;">
+  <h1>🏦 Vault Bank — Login</h1>
+
+  {% if message %}
+    <p style="padding: 10px; border: 1px solid #999; background: #f4f4f4;">{{ message }}</p>
+  {% endif %}
+
+  <form method="POST" action="/login">
+    <label>Username: <input type="text" name="username" /></label><br/><br/>
+    <label>Password: <input type="text" name="password" /></label><br/><br/>
+    <button type="submit">Log in</button>
+  </form>
+</body>
+</html>

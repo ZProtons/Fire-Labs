@@ -12,6 +12,7 @@ Each lab lives in its own directory under `labs/`. The applications are independ
 | [photovault](labs/photovault/) | File-upload flaws, access-control issues, and upload-to-RCE chains | http://127.0.0.1:5001 |
 | [vault-bank-blindsqli](labs/vault-bank-blindsqli/) | Boolean-based blind SQL injection and automated extraction | http://127.0.0.1:5002 |
 | [pixelgram](labs/pixelgram/) | Black-box web application challenge with five hidden flags | http://127.0.0.1:5003 |
+| [novametrics-recon](labs/novametrics-recon/) | Pure reconnaissance, no exploitation — robots.txt, HTML comments, response headers, exposed .git, sitemap.xml, backup files | http://127.0.0.1:5004 |
 
 ## Getting started
 
@@ -45,7 +46,8 @@ Fire-Labs/
     ├── insecure-notes/
     ├── photovault/
     ├── vault-bank-blindsqli/
-    └── pixelgram/
+    ├── pixelgram/
+    └── novametrics-recon/
 ```
 
 New labs belong in a new directory under `labs/`. Keep each lab self-contained and add a README with its purpose, prerequisites, startup instructions, target URL/port, and safety notes. Keep lab-specific write-ups and supporting files inside that lab's directory.
@@ -62,11 +64,13 @@ These applications are deliberately vulnerable. Some demonstrate high-impact beh
 
 ## Scope and history
 
-This repository contains snapshots of the current contents of the four original repositories. The original repositories are not modified by this consolidation and remain available as their historical sources:
+This repository contains snapshots of the current contents of four original repositories. Those original repositories are not modified by this consolidation and remain available as their historical sources:
 
 - https://github.com/ZProtons/insecure-notes
 - https://github.com/ZProtons/photovault
 - https://github.com/ZProtons/vault-bank-blindsqli
 - https://github.com/ZProtons/pixelgram
+
+`novametrics-recon` has no separate standalone repository — it was built directly into this collection.
 
 The copied lab files are organized under `labs/<lab-name>/`. Their original commit histories are not combined into this repository.

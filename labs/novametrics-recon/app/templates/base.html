@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{% block title %}NovaMetrics{% endblock %}</title>
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+  <nav class="topbar">
+    <div class="topbar-inner">
+      <a href="/" class="brand">Nova<span>Metrics</span></a>
+      <div class="navlinks">
+        <a href="/about">About</a>
+        <a href="/services">Services</a>
+        <a href="/careers">Careers</a>
+        <a href="/contact">Contact</a>
+      </div>
+    </div>
+  </nav>
+  {% block content %}{% endblock %}
+  <footer>&copy; 2026 NovaMetrics Analytics Inc. All rights reserved.</footer>
+</body>
+</html>

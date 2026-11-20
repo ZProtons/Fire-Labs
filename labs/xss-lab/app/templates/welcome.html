@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block title %}Welcome — FeedbackLoop{% endblock %}
+{% block content %}
+<main>
+  <div class="section-title">Welcome</div>
+  <p class="muted">Share a link like <code>/welcome#name=YourName</code> and this page will greet whoever opens it.</p>
+  <div class="result-card">
+    <p id="greeting">Hello, friend.</p>
+  </div>
+</main>
+<script>
+  (function () {
+    var hash = location.hash.slice(1); // drop the '#'
+    var match = /(?:^|&)name=([^&]*)/.exec(hash);
+    if (match) {
+      var name = decodeURIComponent(match[1]);
+      document.getElementById("greeting").innerHTML = "Hello, " + name + ".";
+    }
+  })();
+</script>
+{% endblock %}

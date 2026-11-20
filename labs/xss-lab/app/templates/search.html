@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block title %}Search — FeedbackLoop{% endblock %}
+{% block content %}
+<main>
+  <div class="section-title">Search feedback</div>
+  <form class="search-form" method="get" action="/search">
+    <input class="text-input" type="text" name="q" placeholder="Search for a keyword..." value="" />
+    <button class="btn" type="submit">Search</button>
+  </form>
+
+  {% if blocked %}
+  <div class="notice warn">That query was blocked (filtered pattern detected).</div>
+  {% endif %}
+
+  {% if query %}
+  <div class="result-card">
+    <p>Showing results for: {{ query|safe }}</p>
+    <p class="muted">No matching feedback found.</p>
+  </div>
+  {% endif %}
+</main>
+{% endblock %}

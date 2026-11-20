@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block title %}Feedback wall — FeedbackLoop{% endblock %}
+{% block content %}
+<main>
+  <div class="section-title">Feedback wall</div>
+  <div class="section-sub">Public. Anyone can post, anyone can read.</div>
+
+  <form class="feedback-form" method="post" action="/feedback">
+    <div class="field"><label>Name</label><input class="text-input" type="text" name="name" /></div>
+    <div class="field"><label>Message</label><textarea class="text-input" name="message" rows="3"></textarea></div>
+    <button class="btn" type="submit">Post feedback</button>
+  </form>
+
+  <div class="wall">
+    {% for entry in entries %}
+    <div class="wall-entry">
+      <div class="wall-name">{{ entry.name }}</div>
+      <div class="wall-message">{{ entry.message|safe }}</div>
+    </div>
+    {% endfor %}
+  </div>
+</main>
+{% endblock %}

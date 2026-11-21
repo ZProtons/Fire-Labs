@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block title %}Staging Ops{% endblock %}
+{% block content %}
+<main>
+  <div class="notice">This page is not linked from anywhere on the site.</div>
+  <div class="section-title">Staging Ops</div>
+  <p>Internal staging notes for the ops rotation.</p>
+  <p style="font-family: ui-monospace, monospace; background:#1c232d; padding:14px; border-radius:8px;">
+    {{ flag }}
+  </p>
+</main>
+{% endblock %}

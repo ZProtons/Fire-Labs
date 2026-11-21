@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block title %}Internal Portal{% endblock %}
+{% block content %}
+<main>
+  <div class="notice">You're viewing the internal virtual host.</div>
+  <div class="section-title">Internal Portal</div>
+  <p>This host serves a completely separate application surface.</p>
+  <p style="font-family: ui-monospace, monospace; background:#1c232d; padding:14px; border-radius:8px;">
+    {{ flag }}
+  </p>
+</main>
+{% endblock %}

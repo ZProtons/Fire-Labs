@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title %}Dashboard (preview) — ClearDesk{% endblock %}
+{% block content %}
+<main>
+  <div class="notice">Preview mode is enabled for this request.</div>
+  <div class="section-title">Dashboard — internal preview</div>
+  <div class="grid3">
+    <div class="card"><h3>12</h3><p>Open tickets</p></div>
+    <div class="card"><h3>4</h3><p>Pending review</p></div>
+    <div class="card"><h3>98%</h3><p>SLA this month</p></div>
+  </div>
+  <div class="result-card">
+    <p class="muted">Internal-only diagnostics:</p>
+    <p style="font-family: ui-monospace, monospace;">{{ flag }}</p>
+  </div>
+</main>
+{% endblock %}

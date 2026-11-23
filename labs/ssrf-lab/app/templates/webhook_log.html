@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block title %}Webhook Log{% endblock %}
+{% block content %}
+<h1>Webhook Log</h1>
+<p class="desc">What the server actually fetched. This is the "attacker sees" view.</p>
+
+{% if entries %}
+  {% for entry in entries %}
+  <div class="result-box {% if entry.fetched %}ok{% else %}err{% endif %}">
+    <div class="result-label">
+      <strong>{{ entry.time }}</strong> — <code>{{ entry.callback_url | e }}</code>
+      {% if entry.fetched %}<span class="badge ok">FETCHED</span>{% else %}<span class="badge err">FAILED</span>{% endif %}
+    </div>
+    {% if entry.response_snippet %}
+    <pre>{{ entry.response_snippet }}</pre>
+    {% endif %}
+  </div>
+  {% endfor %}
+{% else %}
+  <p class="muted">No webhooks registered yet.</p>
+{% endif %}
+{% endblock %}

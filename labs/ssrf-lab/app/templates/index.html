@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block title %}Home{% endblock %}
+{% block content %}
+<section class="hero">
+  <h1>RequestRelay</h1>
+  <p class="subtitle">A Server-Side Request Forgery lab. Four flags. No hints.</p>
+</section>
+
+<section class="challenges">
+  <div class="card">
+    <span class="num">01</span>
+    <h2>URL Preview</h2>
+    <p>Paste any URL and the server fetches it for you. Useful feature. Dangerous implementation.</p>
+    <a class="btn" href="/fetch">Go →</a>
+  </div>
+  <div class="card">
+    <span class="num">02</span>
+    <h2>Avatar Loader</h2>
+    <p>Supply a remote image URL and the server proxies it. Something interesting lives nearby.</p>
+    <a class="btn" href="/avatar">Go →</a>
+  </div>
+  <div class="card">
+    <span class="num">03</span>
+    <h2>Webhook Registration</h2>
+    <p>Tell the server where to send event callbacks. It will reach out — you just won't see it directly.</p>
+    <a class="btn" href="/webhook/register">Go →</a>
+  </div>
+  <div class="card">
+    <span class="num">04</span>
+    <h2>Export</h2>
+    <p>Exports data from a URL you supply. We added a security fix. Can you work around it?</p>
+    <a class="btn" href="/export">Go →</a>
+  </div>
+</section>
+{% endblock %}

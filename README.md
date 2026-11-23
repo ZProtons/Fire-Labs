@@ -15,6 +15,7 @@ Each lab lives in its own directory under `labs/`. The applications are independ
 | [novametrics-recon](labs/novametrics-recon/) | Pure reconnaissance, no exploitation — robots.txt, HTML comments, response headers, exposed .git, sitemap.xml, backup files | http://127.0.0.1:5004 |
 | [xss-lab](labs/xss-lab/) | Reflected, stored, and DOM-based XSS, with a filter to route around | http://127.0.0.1:5005 |
 | [fuzz-lab](labs/fuzz-lab/) | ffuf-focused: hidden directory, file extension, GET parameter, and virtual host, nothing linked or hinted | http://127.0.0.1:5006 |
+| [ssrf-lab](labs/ssrf-lab/) | Server-Side Request Forgery: basic SSRF, cloud metadata endpoint, blind SSRF, and IP filter bypass | http://127.0.0.1:5008 |
 
 ## Getting started
 
@@ -51,7 +52,8 @@ Fire-Labs/
     ├── pixelgram/
     ├── novametrics-recon/
     ├── xss-lab/
-    └── fuzz-lab/
+    ├── fuzz-lab/
+    └── ssrf-lab/
 ```
 
 New labs belong in a new directory under `labs/`. Keep each lab self-contained and add a README with its purpose, prerequisites, startup instructions, target URL/port, and safety notes. Keep lab-specific write-ups and supporting files inside that lab's directory.
@@ -75,6 +77,6 @@ This repository contains snapshots of the current contents of four original repo
 - https://github.com/ZProtons/vault-bank-blindsqli
 - https://github.com/ZProtons/pixelgram
 
-`novametrics-recon`, `xss-lab`, and `fuzz-lab` have no separate standalone repository — all three, and every lab added from here on, are built directly into this collection.
+`novametrics-recon`, `xss-lab`, `fuzz-lab`, and `ssrf-lab` have no separate standalone repository — all four, and every lab added from here on, are built directly into this collection.
 
 The copied lab files are organized under `labs/<lab-name>/`. Their original commit histories are not combined into this repository.

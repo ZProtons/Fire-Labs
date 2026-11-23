@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block title %}Webhook Registration — Challenge 3{% endblock %}
+{% block content %}
+<h1>Webhook Registration <span class="flag-label">FLAG 3</span></h1>
+<p class="desc">
+  Register a callback URL and the server will immediately ping it to verify it's reachable.
+  The server fetches your URL — but shows you <em>nothing</em> here. Prove it happened.
+</p>
+
+{% if registered %}
+<div class="result-box ok">
+  Webhook registered for <code>{{ url | e }}</code>. The server has attempted to contact it.
+  Check the <a href="/webhook/log">log</a> to see what happened.
+</div>
+{% endif %}
+
+<form method="POST" action="/webhook/register">
+  <div class="input-row">
+    <input type="text" name="callback_url" value="" placeholder="http://your-server/callback" autocomplete="off" spellcheck="false">
+    <button type="submit">Register</button>
+  </div>
+</form>
+
+<div class="hint-box">
+  <strong>Hint:</strong> You need a URL that the server will reach, and that you can observe.
+  The lab runs a "callback server" at <code>127.0.0.1:5043</code> — point the webhook there.
+  Then check <a href="/webhook/log">/webhook/log</a>.
+</div>
+{% endblock %}

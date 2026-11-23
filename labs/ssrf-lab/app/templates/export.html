@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block title %}Export — Challenge 4{% endblock %}
+{% block content %}
+<h1>Export <span class="flag-label">FLAG 4</span></h1>
+<p class="desc">
+  Exports a report from any URL you specify. We patched the SSRF from challenge 1 by blocking
+  <code>127.0.0.1</code> and <code>localhost</code>. The same flag lives at <code>/internal/secret</code>.
+</p>
+
+<form method="GET" action="/export">
+  <div class="input-row">
+    <input type="text" name="url" value="{{ url | e }}" placeholder="http://..." autocomplete="off" spellcheck="false">
+    <button type="submit">Export</button>
+  </div>
+</form>
+
+{% if blocked %}
+<div class="result-box err">
+  🚫 {{ block_msg }}
+</div>
+{% elif result is not none %}
+<div class="result-box">
+  <div class="result-label">Response from: <code>{{ url | e }}</code></div>
+  <pre>{{ result }}</pre>
+</div>
+{% endif %}
+{% endblock %}

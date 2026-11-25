@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% block title %}Challenge 2 — Weak Secret{% endblock %}
+{% block content %}
+<div class="breadcrumb"><a href="{{ url_for('index') }}">← Challenges</a></div>
+<h1>Challenge 2 — Weak Secret</h1>
+<p class="subtitle">HS256 is enforced. The algorithm can't be swapped. But the signing key might be in a wordlist.</p>
+
+{% if logged_in %}
+  <div class="card">
+    <h2>Logged in as {{ username }}</h2>
+    <p style="margin-bottom:1rem;color:var(--muted)">Here is your signed token. Crack the secret, then forge an admin token.</p>
+    <div class="token-box">
+      {% set parts = token.split('.') %}
+      <span class="token-part-header">{{ parts[0] }}</span><span class="token-dot">.</span><span class="token-part-payload">{{ parts[1] }}</span><span class="token-dot">.</span><span class="token-part-sig">{{ parts[2] }}</span>
+    </div>
+    <div class="hint" style="margin-top:1rem">
+      <strong>Hint:</strong> Use <code>hashcat -a 0 -m 16500 &lt;token&gt; rockyou.txt</code> or <code>john</code> with the JWT format to crack the secret. Once you have it, craft a new token with <code>"role":"admin"</code> and sign it correctly.
+    </div>
+  </div>
+{% else %}
+  <div class="card">
+    <h2>Log in</h2>
+    {% if error %}<div class="alert alert-err">{{ error }}</div>{% endif %}
+    <form method="POST">
+      <div class="form-group">
+        <label>Username</label>
+        <input name="username" placeholder="alice">
+      </div>
+      <div class="form-group">
+        <label>Password</label>
+        <input name="password" type="password">
+      </div>
+      <button class="btn" type="submit">Log in</button>
+    </form>
+  </div>
+{% endif %}
+
+<div class="card">
+  <h2>Admin panel</h2>
+  <form action="{{ url_for('c2_admin') }}" method="GET">
+    <div class="form-group">
+      <label>JWT token</label>
+      <textarea name="token" placeholder="eyJ..."></textarea>
+    </div>
+    <button class="btn" type="submit">Submit token</button>
+  </form>
+</div>
+{% endblock %}

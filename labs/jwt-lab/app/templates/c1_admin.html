@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block title %}Challenge 1 — Admin{% endblock %}
+{% block content %}
+<div class="breadcrumb"><a href="{{ url_for('index') }}">← Challenges</a></div>
+<h1>Challenge 1 — Admin Panel</h1>
+
+{% if flag %}
+  <div class="alert alert-ok">✓ Admin access granted.</div>
+  <div class="flag-box">
+    <span class="flag-icon">🚩</span>
+    <span class="flag-value">{{ flag }}</span>
+  </div>
+  <div class="card" style="margin-top:1.5rem">
+    <h2>Your token payload</h2>
+    <div class="json-block">{{ payload | tojson(indent=2) }}</div>
+  </div>
+{% elif error %}
+  <div class="alert alert-err">{{ error }}</div>
+  <p style="margin-top:1rem"><a href="{{ url_for('c1_login') }}">← Back to Challenge 1</a></p>
+{% endif %}
+{% endblock %}

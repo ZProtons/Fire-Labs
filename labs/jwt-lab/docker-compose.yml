@@ -1,0 +1,9 @@
+services:
+  jwt-lab:
+    build: ./app
+    ports:
+      - "5009:5009"
+    environment:
+      FLAG1: "FLAG{4lg_n0n3_trus7_n0_0ne}"
+      FLAG2: "FLAG{w34k_s3cr3t_cr4ck3d_l1k3_4n_egg}"
+      FLAG3: "FLAG{k1d_1nj3ct10n_sq1_g0es_brr}"

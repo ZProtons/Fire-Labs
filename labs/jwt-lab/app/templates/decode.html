@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block title %}JWT Decoder{% endblock %}
+{% block content %}
+<h1>JWT Decoder</h1>
+<p class="subtitle">Decode any JWT without verification. Useful for inspecting what's inside a token.</p>
+
+<div class="card">
+  <h2>Paste token</h2>
+  {% if error %}<div class="alert alert-err">{{ error }}</div>{% endif %}
+  <form method="POST">
+    <div class="form-group">
+      <textarea name="token" placeholder="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...">{% if result %}{{ request.form.token }}{% endif %}</textarea>
+    </div>
+    <button class="btn" type="submit">Decode</button>
+  </form>
+</div>
+
+{% if result %}
+<div class="card">
+  <h2>Header</h2>
+  <div class="json-block token-part-header">{{ result.header | tojson(indent=2) }}</div>
+</div>
+<div class="card">
+  <h2>Payload</h2>
+  <div class="json-block token-part-payload">{{ result.payload | tojson(indent=2) }}</div>
+</div>
+<div class="card">
+  <h2>Signature (Base64url)</h2>
+  <div class="token-box token-part-sig">{{ result.signature or "(empty — alg:none token)" }}</div>
+</div>
+{% endif %}
+{% endblock %}

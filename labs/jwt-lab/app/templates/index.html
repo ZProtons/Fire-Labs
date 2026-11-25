@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% block title %}TokenForge{% endblock %}
+{% block content %}
+<h1>TokenForge</h1>
+<p class="subtitle">A JWT exploitation lab. Three challenges, three common vulnerabilities. No libraries — raw HMAC.</p>
+
+<div class="challenges">
+  <a href="{{ url_for('c1_login') }}" style="text-decoration:none">
+    <div class="challenge-card">
+      <div class="challenge-num">1</div>
+      <div class="challenge-body">
+        <h3>Algorithm Confusion — <code>alg:none</code></h3>
+        <p>The server trusts whatever algorithm the JWT header declares. Can you get admin access without knowing the secret?</p>
+        <div class="tags">
+          <span class="tag">alg:none</span>
+          <span class="tag">header tampering</span>
+          <span class="tag">CVE-2015-9235</span>
+        </div>
+      </div>
+    </div>
+  </a>
+
+  <a href="{{ url_for('c2_login') }}" style="text-decoration:none">
+    <div class="challenge-card">
+      <div class="challenge-num">2</div>
+      <div class="challenge-body">
+        <h3>Weak Secret — Crack the Signature</h3>
+        <p>Algorithm enforcement is correct. But the HMAC key is weak enough to brute-force. Crack it, forge an admin token.</p>
+        <div class="tags">
+          <span class="tag">weak secret</span>
+          <span class="tag">hashcat</span>
+          <span class="tag">john</span>
+        </div>
+      </div>
+    </div>
+  </a>
+
+  <a href="{{ url_for('c3_login') }}" style="text-decoration:none">
+    <div class="challenge-card">
+      <div class="challenge-num">3</div>
+      <div class="challenge-body">
+        <h3>Key ID Injection — <code>kid</code> Header SQLi</h3>
+        <p>The server uses the JWT <code>kid</code> header to look up the signing key from a database — without parameterising the query. Inject, control the key, forge a token.</p>
+        <div class="tags">
+          <span class="tag">kid header</span>
+          <span class="tag">SQL injection</span>
+          <span class="tag">key confusion</span>
+        </div>
+      </div>
+    </div>
+  </a>
+</div>
+
+<div class="hint" style="margin-top:2rem">
+  <strong>Setup:</strong> Log in as <code>alice</code> / <code>hunter2</code> to get a valid token, then manipulate it to gain admin access. The <a href="{{ url_for('decode') }}">JWT decoder</a> is available to inspect any token.
+</div>
+{% endblock %}
